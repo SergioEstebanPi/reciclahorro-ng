@@ -1,0 +1,23 @@
+<br>
+
+<div class="jumbotron">
+	<div class="container">
+		<h3>Iniciar sesión</h3>
+		<form>
+			<div class="alert alert-danger alert-dismissible" *ngIf="error">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <strong>Error</strong> No fue posible realizar la autenticación
+			</div>
+			<div class="form-group">
+				<label for="correo">Correo electrónico:</label>
+				<input type="email" name="correo" [(ngModel)]="formulario.auth.email" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="password">Contraseña:</label>
+				<input type="password" name="password" [(ngModel)]="formulario.auth.password" class="form-control">
+			</div>
+			<button class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+		</form>	
+	</div>	
+</div>
+<br>

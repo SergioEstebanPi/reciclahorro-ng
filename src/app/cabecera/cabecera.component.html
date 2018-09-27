@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <a class="navbar-brand" routerLink="/inicio">Reciclahorro</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/inicio">Inicio</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Noticias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
+      </li>
+      <li class="nav-item" *ngIf="usuario">
+        <a class="nav-link" routerLink="/traer-descuentos">Descuentos</a>
+      </li>
+      <li class="nav-item" *ngIf="usuario">
+        <a class="nav-link" routerLink="/traer-productos">Productos</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="!usuario">
+        <a class="nav-link" routerLink="/iniciar_sesion">Iniciar Sesión</a>
+      </li>
+      <li class="nav-item" *ngIf="!usuario">
+        <a class="nav-link" routerLink="/crear_cuenta">Crear cuenta</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="usuario">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           {{ usuario.email }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item">Configuración</a>
+          <a class="dropdown-item" (click)="cerrarSesion()">Cerrar sesión</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+<h1>Modificar producto</h1>
+<form>
+	<div class="form-group">
+		<label for="nombre">nombre</label>
+		<input [(ngModel)]="producto.nombre" type="text" name="nombre" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="descripcion">descripcion</label>
+		<textarea [(ngModel)]="producto.descripcion" type="text" name="descripcion" class="form-control"></textarea>
+  </div>
+	<button class="btn btn-success" (click)="modificarProducto()">Modificar producto</button>
+</form>

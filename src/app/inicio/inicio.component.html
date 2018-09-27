@@ -1,0 +1,163 @@
+<div *ngIf="usuario">
+
+  <div class="container">
+
+    <h1 class="text-center">Accesos rápidos</h1>
+    <div class="row">
+      <div class="col-sm">
+        <div class="card float-left" style="width: 18rem;">
+          <img class="card-img-top" style="height: 119px;" src="https://blog.hotmart.com/wp-content/uploads/2016/12/ofertas-productos-precios-alternativos-670x432.png" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Ofertas</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card mx-auto d-blockt" style="width: 18rem;">
+          <img class="card-img-top" style="height: 119px;" src="http://www.pepsico.cl/images/librariesprovider40/default-album/vb3_montaje-productos-pepsico2e33c3aeef576d378be6ff5000e253d8.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Productos</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card float-right" style="width: 18rem;">
+          <img class="card-img-top" style="height: 119px;" src="https://cdn.shopify.com/s/files/1/0229/0839/files/Blog_Banner.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Descuentos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="http://agropropanama.com/wp-content/uploads/2017/10/reciclaje-de-papeles-04-680x342.png" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="http://acaminar.org/data/2015/08/reciclaje-02-680x342.png" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="http://traperosdesanpablo.org/data/2016/02/AYUDEMOS-RECICLANDO.png" alt="Third slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://pbs.twimg.com/media/DOnCj76W0AAVPqG.jpg" alt="Fourth slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
+  </div>
+</div>
+
+<br>
+
+
+<div class="container principal">
+  <br>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8 principal-contenido">
+              
+      <h3 class="text-center">Bienvenido a Reciclahorro</h3>
+      <div class="alert alert-success alert-dismissible" *ngIf="usuario">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Bienvenido!</strong> Has iniciado sesión
+      </div>  
+      <h3>¿Que es Reciclahorro?</h3>
+      <p>
+          Somos un proyecto que nace con la idea crear un 
+          escenario en el que se haga un eficiente uso de 
+          los recursos mediante el aprovechamiento de los 
+          residuos y la adecuada disposición de las basuras. 
+          Sirviendo con medios de comunicación que promuevan 
+          los hábitos de higiene con la ciudadanía. 
+      </p>
+      <h3>¿Que desea lograr reciclahorro?</h3>
+      <p>Adoptar conductas que garanticen la correcta clasificación y disposición de las basuras en el sitio apropiado por medio del uso de una aplicación móvil, que permita a los usuarios
+          beneficiarse de hacer uso adecuado de las basuras 
+      <h4>Nuestra propuesta de producto:</h4>
+      <p>Desarrollar una aplicación que permita el desarrollo de competencias ciudadanas para la transformación y conservación del entorno. La aplicación muestra información sobre la
+      clasificación adecuada de las basuras al usuario, que resuelven a las siguientes interrogantes:
+      </p>
+      <div class="text-center">
+        <img src="http://www.plastico.com/documenta/imagenes/119668/Estudio-revela-posibles-ahorros-al-cerrar-el-ciclo-reciclando-plasticos-GR.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+      </div>
+      <h4>Reciclaje, reutilización y reparación:</h4>
+
+      <ol>
+        <li>¿Qué debemos tirar?</li>
+        <li>¿Qué debe ser guardado?</li>
+        <li>¿Qué puede ser útil para otra persona u otro departamento?</li>
+        <li>¿Qué deberíamos reparar?</li>
+        <li>¿Qué podemos vender?</li>
+      </ol>
+          
+      <h4>Reducción y clasificación:</h4>
+      <ol>
+        <li>¿Es posible reducir el stock de esta cosa?</li>
+        <li>¿Esto es necesario que esté a mano?</li>
+        <li>¿Todos llamaremos a esto con el mismo nombre?</li>
+        <li>¿Cuál es el mejor lugar para cada cosa?</li>
+        <li>¿Es posible reducir el stock de esta cosa?</li>
+        <li>¿Es posible reducir el stock de esta cosa?</li>
+      </ol>    
+      <h4>Concientización:</h4>
+      <ol>
+        <li>¿Cree que realmente puede considerarse como “Limpio”?</li>
+        <li>¿Esto es necesario que esté a mano?</li>
+        <li>¿Qué utensilios, tiempo o recursos necesitaría para ello?</li>
+        <li>¿Cuál es el mejor lugar para cada cosa?</li>
+        <li>¿Qué cree que mejoraría el grado de Limpieza?</li>
+        <li>¿Es posible reducir el stock de esta cosa?</li>
+      </ol>    
+      <h4>Módulos</h4>
+      <ul>
+        <li>módulo informativo: noticias sobre campañas.</li>
+        <li>módulo de clasificación: información relacionada con la deposición de correcta de los residuos.</li>
+        <li>módulo de reconocimiento: likes, gráficas de cantidad de likes, en tarjetas punto o bonos en almacenes o puntos de compra.</li>
+        <li>residuos de mascotas.</li>
+        <li>compartir y donar</li>
+      </ul>      
+    </div>
+
+    <div class="col-md-4 sidebar">
+
+        <br>
+        <h3 class="text-center">Cuida el medio ambiente</h3>
+        <p>Salva el planeta para que las futuras generaciones lo puedan disfrutar al igual que tu lo haces.</p>  
+        <div class="carousel-inner container">
+          <div class="carousel-item">
+            <img class="d-block w-100" src="http://www.maquituls.es/noticias/wp-content/uploads/2017/06/reci.jpg" alt="Fourth slide">
+          </div>
+        </div>          
+        <img class="d-block w-100" src="http://www.maquituls.es/noticias/wp-content/uploads/2017/06/reci.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"> 
+        <h3>¿Cómo puedo empezar a reciclar ahorrando?</h3>
+        <p>Con Reciclahorro obtienes beneficios en almacenes de cadena puedes solicitar la recolección de tus residuos o entregarlos
+          en los punto de recolección cercanos a tu hogar, posteriormente se te otorgan los beneficios de los cuales puedes disfrutar
+          según la oferta realizada por el almacen, el tipo de residuo, el estado y la cantidad que se recicle.
+        </p>
+        <h4>¿Ya estás registrado?</h4>
+        <button class="btn btn-primary" routerLink="/iniciar_sesion">Iniciar sesión</button>
+    </div>         
+  </div>
+
+  <br>
+  <br>
+</div>

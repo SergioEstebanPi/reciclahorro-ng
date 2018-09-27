@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    /*background-color: #fafafa;*/
+    /*background-color: #ffffff;*/
+    background-color: rgba(253, 213, 131, 0.664);
+}
+
+.principal {
+	background-color: white;
+}

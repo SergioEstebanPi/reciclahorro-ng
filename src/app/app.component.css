@@ -1,0 +1,29 @@
+.principal-contenido {
+    background-color: #57798c;
+    border-left: solid 2px rgba(128, 128, 128, 0.24);
+    padding-left: 10px;
+}
+
+.navbar {
+    background-color: rgb(83, 160, 0);
+}
+
+.navbar-toggler, .navbar-toggler-icon{
+    border: 1px solid white;
+}
+
+.nav-link, .navbar-brand{
+    color: white;
+}
+
+.nav-link:hover, .navbar-brand:hover{
+    color: rgb(208, 235, 214);
+}
+
+.footer {
+    background-color: rgb(0, 0, 0);
+}
+
+p {
+    padding: 10px;
+}

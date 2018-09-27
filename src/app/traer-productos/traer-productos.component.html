@@ -1,0 +1,20 @@
+<h2>Listado de productos</h2>
+<button class="btn btn-success" routerLink="/crear-producto">Nuevo</button>
+<table class="table table-hover table-bordered">
+	<thead>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+		<th>Acción</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let producto of productos">
+        <td>{{ producto.nombre }}</td>
+				<td>{{ producto.descripcion }}</td>
+				<td>
+					<a [routerLink]="['/modificar-producto', producto.id]" class="btn btn-light">Editar</a>
+					<a (click)="eliminaProducto(producto.id)" class="btn btn-light">Eliminar</a>
+				</td>
+			
+		</tr>
+	</tbody>
+</table>
