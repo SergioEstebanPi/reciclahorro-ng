@@ -30,7 +30,7 @@
 	  <div class="card-body">
 	    <h5 class="card-title">{{ oferta.residuo.nombre }}</h5>
 	    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
-	    <img class="card-img-top" src="https://static.iris.net.co/dinero/upload/images/2010/9/16/103375_91919_1.jpg" style="max-width: 35%" alt="Card image cap">
+	    <img class="card-img-top" src="assets/img/103375_91919_1.jpg" style="max-width: 35%" alt="Card image cap">
 	    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
 			<a *ngIf="usuario" (click)="mostraroferta(oferta.id)" class="btn btn-light">Editar</a>
 			<a *ngIf="usuario" (click)="eliminaroferta(oferta.id)" class="card-link">Eliminar</a>

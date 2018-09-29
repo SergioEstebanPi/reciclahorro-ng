@@ -13,7 +13,7 @@ export class ProductosService {
   productos:Array<any>;
 
   constructor(private http:HttpClient) {
-  	this.url = "http://reciclahorro-api.herokuapp.com/productos";
+  	this.url = "https://reciclahorro-api.herokuapp.com/productos";
   	this.encabezados = {
   		headers: new HttpHeaders(
 		  	{
