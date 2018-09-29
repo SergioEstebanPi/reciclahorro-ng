@@ -1,5 +1,5 @@
 {
-  "name": "reciclahorro-ng",
+  "name": "reciclahorro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,9 +12,12 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.8.0",
     "@angular/animations": "^6.1.0",
+    "@angular/cli": "~6.2.2",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
+    "@angular/compiler-cli": "^6.1.0",
     "@angular/core": "^6.1.0",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
@@ -25,6 +28,7 @@
     "express": "^4.16.3",
     "path": "^0.12.7",
     "rxjs": "~6.2.0",
+    "typescript": "~2.9.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
