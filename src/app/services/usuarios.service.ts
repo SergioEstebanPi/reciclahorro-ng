@@ -16,7 +16,7 @@ export class UsuariosService {
 
 	constructor(private http: HttpClient,
 		private _router: Router) {
-		this.url = "http://reciclahorro-api.herokuapp.com";
+		this.url = "https://reciclahorro-api.herokuapp.com";
 		this.encabezados = {
 			headers: new HttpHeaders(
 				{
