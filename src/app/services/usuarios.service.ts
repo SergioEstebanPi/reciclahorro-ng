@@ -13,9 +13,11 @@ export class UsuariosService {
 	private url: string;
 	private encabezados: any;
 	public usuario: BehaviorSubject<Object> = new BehaviorSubject<Object>(false);
+	public logeado: boolean;
 
 	constructor(private http: HttpClient,
 		private _router: Router) {
+		this.logeado = false;
 		this.url = "https://reciclahorro-api.herokuapp.com";
 		this.encabezados = {
 			headers: new HttpHeaders(
@@ -26,6 +28,11 @@ export class UsuariosService {
 			)
 		};
 
+	}
+
+	isLogeado(){
+		this.logeado = localStorage.getItem("SessionToken") != null;
+		return this.logeado;
 	}
 
 	obtenerToken(autenticacion): Observable<any> {
@@ -53,8 +60,9 @@ export class UsuariosService {
 				this.usuarioActual()
 					.subscribe(
 						respuesta => {
-							this.usuario.next(respuesta);
-							this._router.navigate(['/']);
+							//this.usuario.next(respuesta);
+							this.logeado = true;
+							this._router.navigateByUrl('/');
 						},
 						error => {
 							console.log(error);

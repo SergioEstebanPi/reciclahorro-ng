@@ -13,23 +13,50 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
       </li>
-      <li class="nav-item" *ngIf="usuario">
+      <li class="nav-item" *ngIf="logeado">
         <a class="nav-link" routerLink="/traer-descuentos">Descuentos</a>
       </li>
-      <li class="nav-item" *ngIf="usuario">
+      <li class="nav-item" *ngIf="logeado">
         <a class="nav-link" routerLink="/traer-productos">Productos</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" *ngIf="!usuario">
-        <a class="nav-link" routerLink="/iniciar_sesion">Iniciar Sesión</a>
+      <li class="nav-item dropdown" *ngIf="!logeado">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFormIniciarSesion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Iniciar Sesión
+        </a>
+        <div class="dropdown-menu" style="width:200%;left: -50%" aria-labelledby="navbarDropdownFormIniciarSesion">
+  
+          <div class="">
+            <div class="container">
+              <h3>Iniciar sesión</h3>
+              <form>
+                <div class="alert alert-danger alert-dismissible" *ngIf="error">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Error</strong> No fue posible realizar la autenticación
+                </div>
+                <div class="form-group">
+                  <label for="correo">Correo electrónico:</label>
+                  <input type="email" name="correo" [(ngModel)]="formulario.auth.email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña:</label>
+                  <input type="password" name="password" [(ngModel)]="formulario.auth.password" class="form-control">
+                </div>
+                <button class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+              </form> 
+            </div>  
+          </div>
+               
+        </div>        
+        
       </li>
-      <li class="nav-item" *ngIf="!usuario">
+      <li class="nav-item" *ngIf="!logeado">
         <a class="nav-link" routerLink="/crear_cuenta">Crear cuenta</a>
       </li>
-      <li class="nav-item dropdown" *ngIf="usuario">
+      <li class="nav-item dropdown" *ngIf="logeado">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{ usuario.email }}
+           {{usuario.email}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item">Configuración</a>

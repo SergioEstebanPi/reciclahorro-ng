@@ -11,7 +11,9 @@ import { UsuariosService } from '../services/usuarios.service';
 export class TraerOfertasComponent implements OnInit {
 
   ofertas:Array<any>;
-  usuario: any;
+  autenticado: boolean;
+  loading:boolean;
+  frase:string;
 
 
   constructor(private _ofertas:OfertasService,
@@ -29,6 +31,16 @@ export class TraerOfertasComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
+    if (localStorage.getItem("SessionToken")){
+      //alert("ud tiene token");
+      this.autenticado = true;
+    } else {
+      //alert("ud no tiene token");
+      this.autenticado = false;
+    }
+    this.traerOfertas();
+    /*
     this._usuarios
       .buscarUsuario();
     this._usuarios
@@ -42,14 +54,21 @@ export class TraerOfertasComponent implements OnInit {
         }
       );
     this.traerOfertas();
+    */
+  }
+
+  onKey(event:any){
+    this.frase = event.target.value;
+    //console.log(this.frase);
   }
 
   traerOfertas(){
-  	this._ofertas.traerOfertas()
+    this._ofertas.traerOfertas()
   		.subscribe(
   			respuesta => {
   				//console.log(respuesta);
   				this.ofertas = respuesta;
+          this.loading = false;
   			},
   			error => {
   				console.log(error);

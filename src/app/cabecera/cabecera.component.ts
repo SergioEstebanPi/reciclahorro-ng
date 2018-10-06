@@ -12,10 +12,18 @@ import { Input } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
   //autenticado:Observable<boolean>;
-  usuario: any;
+  //usuario: any;
+  logeado:boolean;
+  error:boolean;
+  formulario: any;
+  usuario:any;
 
   constructor(private _usuarios: UsuariosService,
     private router: Router) {
+      this.usuario = {
+        nombre: "",
+        email: ""
+      }
     /*
       this.usuario = {
         nombre: "",
@@ -33,9 +41,12 @@ export class CabeceraComponent implements OnInit {
         }
       );
       */
+      this.logeado = false;
+      this.error = false;
   }
 
   ngOnInit() {
+    /*
     this._usuarios
       .buscarUsuario();
     this._usuarios
@@ -48,12 +59,61 @@ export class CabeceraComponent implements OnInit {
           console.log(error);
         }
       );
+     */
+     //alert("init");
+     //this.logeado = this._usuarios.isLogeado();
+     this.logeado = localStorage.getItem("SessionToken") != null;
+     this.formulario = {
+        auth: {
+          email: "",
+          pasword: ""
+        }
+      };
+      this.obtenerUsuario();
+     
+  }
+
+  iniciarSesion() {
+    this._usuarios
+      .obtenerToken(this.formulario)
+      .subscribe(
+        respuesta => {
+          localStorage.setItem("SessionToken", respuesta.jwt);
+          console.log("Token generado");
+          this.logeado = true;
+          this.error = false;
+          this.obtenerUsuario();
+          //this.router.navigateByUrl('/');
+        },
+        error => {
+          this.error = true;
+          console.log(error);
+        }
+      );
+  } 
+
+  obtenerUsuario(){
+    this._usuarios.usuarioActual()
+      .subscribe(
+        respuesta => {
+          this.usuario = respuesta;
+          //this.usuario.next(respuesta);
+          //this.logeado = true;
+          this.router.navigateByUrl('/');
+        },
+        error => {
+          console.log(error);
+          this.usuario = null;
+        }
+    );
   }
 
   cerrarSesion() {
     localStorage.removeItem('SessionToken');
     //this.usuario = null;
-    this._usuarios.usuario.next(null);
-    this.router.navigate(['/']);
+   // this._usuarios.usuario.next(null);
+    this.logeado = false;
+    //this.router.navigate(['/']);
+    this.router.navigateByUrl('/');
   }
 }
