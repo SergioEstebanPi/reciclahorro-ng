@@ -10,6 +10,7 @@ import { DescuentosService } from '../services/descuentos.service';
 export class TraerDescuentosComponent implements OnInit {
 
   descuentos:Array<any>;
+  frase:string;
 
   constructor(private _descuentos:DescuentosService) {
 	this.traerDescuentos();
@@ -27,12 +28,39 @@ export class TraerDescuentosComponent implements OnInit {
     //this.traerDescuentos();
   }
 
+  onKey(event:any){
+    this.frase = event.target.value;
+    //console.log(this.frase);
+    /*
+    if (this.frase && this.frase.trim() != '') {
+      this.ofertas = this.ofertas.filter(
+        (item) => {
+          return (item.titulo.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+        }
+      );
+      //console.log(this.ofertas);
+    } else {
+      this.traerOfertas();
+    }
+    */
+    this.traerDescuentos();
+
+  }  
+
   traerDescuentos(){
   	this._descuentos.traerDescuentos()
   		.subscribe(
   			respuesta => {
   				//console.log(respuesta);
   				this.descuentos = respuesta;
+            if (this.frase && this.frase.trim() != '') {
+            this.descuentos = this.descuentos.filter(
+              (item) => {
+                return (item.titulo.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+              }
+            );
+            //console.log(this.descuentos);
+          }
   			},
   			error => {
   				console.log(error);

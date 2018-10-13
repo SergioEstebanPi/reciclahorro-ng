@@ -34,10 +34,16 @@ import { CrearResiduoComponent } from './crear-residuo/crear-residuo.component';
 import { ModificarResiduoComponent } from './modificar-residuo/modificar-residuo.component';
 
 import { Globals } from './globals';
+import { ContactoComponent } from './contacto/contacto.component';
+import { AcercadeComponent } from './acercade/acercade.component';
+import { NoticiasComponent } from './noticias/noticias.component';
 
 const rutas:Routes=[
   {path:"", component:InicioComponent},
   {path:"inicio", component:InicioComponent},
+  {path:"noticias", component:NoticiasComponent},
+  {path:"contacto", component:ContactoComponent},
+  {path:"acercade", component:AcercadeComponent},
   {path:"iniciar-sesion", component:IniciarSesionComponent},
   {path:"crear_cuenta", component:CrearCuentaComponent},
 
@@ -81,7 +87,10 @@ const rutas:Routes=[
     NgbdModalContent,
     TraerResiduosComponent,
     CrearResiduoComponent,
-    ModificarResiduoComponent
+    ModificarResiduoComponent,
+    ContactoComponent,
+    AcercadeComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,

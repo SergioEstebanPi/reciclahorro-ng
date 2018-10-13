@@ -11,22 +11,14 @@ import { UsuariosService } from '../services/usuarios.service';
 export class TraerOfertasComponent implements OnInit {
 
   ofertas:Array<any>;
-  autenticado: boolean;
+  logeado: boolean;
   loading:boolean;
   frase:string;
-  items:string[];
 
 
   constructor(private _ofertas:OfertasService,
     private _usuarios: UsuariosService) {
     this.ofertas = [];
-    this.items = [
-      'a',
-      'b',
-      'c',
-      'd',
-      'e'
-    ];
     /*
     this.ofertas = [{
   		//id: "",
@@ -42,10 +34,10 @@ export class TraerOfertasComponent implements OnInit {
     this.loading = true;
     if (localStorage.getItem("SessionToken")){
       //alert("ud tiene token");
-      this.autenticado = true;
+      this.logeado = true;
     } else {
       //alert("ud no tiene token");
-      this.autenticado = false;
+      this.logeado = false;
     }
     this.traerOfertas();
     /*

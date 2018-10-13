@@ -8,6 +8,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IniciarSesionComponent } from '../iniciar-sesion/iniciar-sesion.component';
 import { CrearCuentaComponent } from '../crear-cuenta/crear-cuenta.component';
 
+import { Globals } from '../globals';
+
 
 @Component({
   selector: 'app-cabecera',
@@ -18,13 +20,13 @@ export class CabeceraComponent implements OnInit {
   logeado:boolean;
   error:boolean;
   usuario:any;
-  mostrar:boolean;
 
   modalRef:any;
 
   constructor(private _usuarios: UsuariosService,
     private _router: Router,
-    private _modal: NgbModal) {
+    private _modal: NgbModal,
+    private _globlas: Globals) {
       this.usuario = {
         nombre: "",
         email: ""

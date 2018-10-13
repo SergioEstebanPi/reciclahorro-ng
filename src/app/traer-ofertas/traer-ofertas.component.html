@@ -6,7 +6,7 @@
     <div class="col-md-8 principal-contenido">
 		<div class="form-group" text-center>
 			<h2>Listado de ofertas</h2>
-			<button *ngIf="autenticado" class="btn btn-success" routerLink="/crear-oferta">Nuevo</button>
+			<button *ngIf="logeado" class="btn btn-success" routerLink="/crear-oferta">Nuevo</button>
 		</div>
 
 		<img *ngIf="loading" src="assets/img/loading.gif"/> 
@@ -19,8 +19,8 @@
 			    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
 			    <img class="card-img-top" src="assets/{{oferta.imagen}}" style="width: 100px" alt="Card image cap">
 			    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
-					<a *ngIf="autenticado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
-					<a *ngIf="autenticado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>
+					<a *ngIf="logeado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
+					<a *ngIf="logeado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>
 			  </div>
 			</div>
 			<br>

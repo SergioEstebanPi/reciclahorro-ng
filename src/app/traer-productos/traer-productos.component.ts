@@ -9,6 +9,7 @@ import { ProductosService } from '../services/productos.service';
 export class TraerProductosComponent implements OnInit {
 
   productos:Array<any>;
+  frase:string;
 
   constructor(private _productos:ProductosService) {
     this.productos = [{
@@ -22,12 +23,41 @@ export class TraerProductosComponent implements OnInit {
     this.traerProductos();
   }
 
+
+  onKey(event:any){
+    this.frase = event.target.value;
+    //console.log(this.frase);
+    /*
+    if (this.frase && this.frase.trim() != '') {
+      this.ofertas = this.ofertas.filter(
+        (item) => {
+          return (item.titulo.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+        }
+      );
+      //console.log(this.ofertas);
+    } else {
+      this.traerOfertas();
+    }
+    */
+    this.traerProductos();
+
+  }    
+
+
   traerProductos(){
   	this._productos.traerProductos()
   		.subscribe(
   			respuesta => {
   				//console.log(respuesta);
-  				this.productos = respuesta;
+          this.productos = respuesta;
+          if (this.frase && this.frase.trim() != '') {
+            this.productos = this.productos.filter(
+              (item) => {
+                return (item.nombre.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+              }
+            );
+          }
+  				//this.productos = respuesta;
   			},
   			error => {
   				console.log(error);

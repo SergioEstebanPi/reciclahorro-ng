@@ -16,4 +16,8 @@ export class CrearOfertaComponent implements OnInit {
   ngOnInit() {
   }
 
+  crearOferta(){
+  	
+  }
+
 }

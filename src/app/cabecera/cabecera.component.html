@@ -8,20 +8,35 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/inicio">Inicio</a>
       <li class="nav-item">
-        <a class="nav-link" href="#">Noticias</a>
+        <a class="nav-link" routerLink="/noticias">Noticias</a>
       </li>
+      <li class="nav-item dropdown" *ngIf="logeado">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Panel de control
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
+            </li>    
+            <li class="nav-item" *ngIf="logeado">
+              <a class="nav-link" routerLink="/traer-descuentos">Descuentos</a>
+            </li>
+            <li class="nav-item" *ngIf="logeado">
+              <a class="nav-link" routerLink="/traer-productos">Productos</a>
+            </li>
+            <li class="nav-item" *ngIf="logeado">
+              <a class="nav-link" routerLink="/traer-residuos">Residuos</a>
+            </li> 
+          </ul>
+        </div>
+      </li>      
       <li class="nav-item">
-        <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
-      </li>
-      <li class="nav-item" *ngIf="logeado">
-        <a class="nav-link" routerLink="/traer-descuentos">Descuentos</a>
-      </li>
-      <li class="nav-item" *ngIf="logeado">
-        <a class="nav-link" routerLink="/traer-productos">Productos</a>
-      </li>
-      <li class="nav-item" *ngIf="logeado">
-        <a class="nav-link" routerLink="/traer-residuos">Residuos</a>
-      </li>
+        <a class="nav-link" routerLink="/contacto">Contacto</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/acercade">Acerca de</a>
+      </li>   
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item" data-toggle="modal" (click)="openIniciarSesion()" *ngIf="!logeado">
@@ -32,7 +47,8 @@
       </li>
       <li class="nav-item dropdown" *ngIf="logeado">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{usuario.email}}
+           {{usuario.name}}
+           <img [src]="'assets/' + usuario.foto" alt="Avatar" class="avatar">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item">Configuración</a>
