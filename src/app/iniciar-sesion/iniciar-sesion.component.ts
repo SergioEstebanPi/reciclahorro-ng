@@ -12,7 +12,6 @@ import { Output, EventEmitter } from '@angular/core';
 	styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-
 	formulario: any;
 	error:boolean;
 
@@ -20,7 +19,7 @@ export class IniciarSesionComponent implements OnInit {
 	onLogeado = new EventEmitter<boolean>()
 
 	constructor(private _usuarios: UsuariosService,
-		private router: Router) {
+		private _router: Router) {
 		this.formulario = {
 			auth: {
 				email: "",
@@ -38,12 +37,10 @@ export class IniciarSesionComponent implements OnInit {
 			.subscribe(
 				respuesta => {
 					localStorage.setItem("SessionToken", respuesta.jwt);
-					console.log("Token generado");
 					this.onLogeado.emit(true);
-					//this._usuarios.buscarUsuario();
 					this.error = false;
-					
-					
+					//this.logeado = true;
+					//this._router.navigateByUrl('/');
 				},
 				error => {
 					this.error = true;

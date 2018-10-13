@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../services/usuarios.service';
 import { Router } from '@angular/router';
 
+import { Output, EventEmitter } from '@angular/core';
+
 @Component({
   selector: 'app-crear-cuenta',
   templateUrl: './crear-cuenta.component.html',
@@ -12,6 +14,9 @@ export class CrearCuentaComponent implements OnInit {
 
   formulario:any;
   error:boolean;
+
+  @Output()
+  onLogeado = new EventEmitter<boolean>()
 
   constructor(private _usuarios:UsuariosService,
     private _router: Router) {
@@ -30,12 +35,10 @@ export class CrearCuentaComponent implements OnInit {
   }
 
   crearCuenta(){
-  	//console.log(this.formulario);
   	this._usuarios
   		.crearCuenta(this.formulario)
   		.subscribe(
   			respuesta => {
-  				//console.log(respuesta);
   				let autenticacion = {
   					auth:{
   						email: this.formulario.user.email,
@@ -43,7 +46,6 @@ export class CrearCuentaComponent implements OnInit {
   					}
   				};
           this.iniciarSesion(autenticacion);
-  				//this._usuarios.iniciarSesion(autenticacion);
   			},
   			error => {
   				console.log(error);
@@ -57,10 +59,8 @@ export class CrearCuentaComponent implements OnInit {
       .subscribe(
         respuesta => {
           localStorage.setItem("SessionToken", respuesta.jwt);
-          console.log("Token generado");
-          this._usuarios.buscarUsuario();
           this.error = false;
-          this._router.navigate(['/']);
+          this.onLogeado.emit(true);
         },
         error => {
           this.error = true;

@@ -29,7 +29,7 @@ import { ModificarDescuentoComponent } from './modificar-descuento/modificar-des
 const rutas:Routes=[
   {path:"", component:InicioComponent},
   {path:"inicio", component:InicioComponent},
-  {path:"iniciar_sesion", component:IniciarSesionComponent},
+  {path:"iniciar-sesion", component:IniciarSesionComponent},
   {path:"crear_cuenta", component:CrearCuentaComponent},
   {path:"traer-ofertas", component:TraerOfertasComponent},
   {path:"crear-oferta", component:CrearOfertaComponent},

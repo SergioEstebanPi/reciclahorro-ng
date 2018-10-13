@@ -28,7 +28,8 @@ export class CrearDescuentoComponent implements OnInit {
   }
 
   crearDescuento(){
-    this._usuarios.usuario.subscribe(
+    /*
+    this._usuarios.usuarioActual.subscribe(
       respuesta => {
         this.descuento.almacen_id = respuesta['id'];
       },
@@ -46,5 +47,6 @@ export class CrearDescuentoComponent implements OnInit {
 					console.log(error);
 				}
 		);
+    */
   }
 }

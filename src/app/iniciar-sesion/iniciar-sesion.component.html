@@ -1,23 +1,65 @@
-<br>
-
-<div class="jumbotron">
-	<div class="container">
-		<h3>Iniciar sesión</h3>
-		<form>
-			<div class="alert alert-danger alert-dismissible" *ngIf="error">
-			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			  <strong>Error</strong> No fue posible realizar la autenticación
-			</div>
-			<div class="form-group">
-				<label for="correo">Correo electrónico:</label>
-				<input type="email" name="correo" [(ngModel)]="formulario.auth.email" class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="password">Contraseña:</label>
-				<input type="password" name="password" [(ngModel)]="formulario.auth.password" class="form-control">
-			</div>
-			<button class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
-		</form>	
-	</div>	
+<!--
+<div class="">
+  <div class="container">
+    <h3>Iniciar sesión</h3>
+    <form>
+      <div class="alert alert-danger alert-dismissible" *ngIf="error">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error</strong> No fue posible realizar la autenticación
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" name="correo" [(ngModel)]="formulario.auth.email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" [(ngModel)]="formulario.auth.password" class="form-control">
+      </div>
+      <button class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+    </form> 
+  </div>  
 </div>
-<br>
+-->
+
+<!-- Button trigger modal -->
+<!--
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+-->
+
+<!-- Modal -->
+<div class="modal fade" id="iniciarSesionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="alert alert-danger alert-dismissible" *ngIf="error">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Error</strong> No fue posible realizar la autenticación
+                </div>
+                <div class="form-group">
+                  <label for="correo">Correo electrónico:</label>
+                  <input type="email" name="correo" [(ngModel)]="formulario.auth.email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña:</label>
+                  <input type="password" name="password" [(ngModel)]="formulario.auth.password" class="form-control">
+                </div>
+            </div>  
+        </div>
+        <div class="modal-footer">
+          <!-- data-dismiss="modal" -->
+          <button class="btn btn-primary" data-dismiss="modal" (click)="iniciarSesion()">Iniciar Sesión</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -14,11 +14,19 @@ export class TraerOfertasComponent implements OnInit {
   autenticado: boolean;
   loading:boolean;
   frase:string;
+  items:string[];
 
 
   constructor(private _ofertas:OfertasService,
     private _usuarios: UsuariosService) {
-    //this.ofertas = [];
+    this.ofertas = [];
+    this.items = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e'
+    ];
     /*
     this.ofertas = [{
   		//id: "",
@@ -59,7 +67,18 @@ export class TraerOfertasComponent implements OnInit {
 
   onKey(event:any){
     this.frase = event.target.value;
-    //console.log(this.frase);
+    // console.log(this.frase);
+    if (this.frase && this.frase.trim() != '') {
+      this.ofertas = this.ofertas.filter(
+        (item) => {
+          return (item.residuo.nombre.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+        }
+      );
+      //console.log(this.ofertas);
+    } else {
+      this.traerOfertas();
+    }
+
   }
 
   traerOfertas(){
