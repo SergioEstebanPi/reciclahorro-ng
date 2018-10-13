@@ -67,17 +67,20 @@ export class TraerOfertasComponent implements OnInit {
 
   onKey(event:any){
     this.frase = event.target.value;
-    // console.log(this.frase);
+    //console.log(this.frase);
+    /*
     if (this.frase && this.frase.trim() != '') {
       this.ofertas = this.ofertas.filter(
         (item) => {
-          return (item.residuo.nombre.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+          return (item.titulo.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
         }
       );
       //console.log(this.ofertas);
     } else {
       this.traerOfertas();
     }
+    */
+    this.traerOfertas();
 
   }
 
@@ -86,7 +89,16 @@ export class TraerOfertasComponent implements OnInit {
   		.subscribe(
   			respuesta => {
   				//console.log(respuesta);
-  				this.ofertas = respuesta;
+          if (this.frase && this.frase.trim() != '') {
+            this.ofertas = respuesta.filter(
+              (item) => {
+                return (item.titulo.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
+              }
+            );
+          } else {
+            this.ofertas = respuesta;
+          }          
+
           this.loading = false;
   			},
   			error => {

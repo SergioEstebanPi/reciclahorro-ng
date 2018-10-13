@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearOfertaComponent implements OnInit {
 
-  constructor() { }
+  oferta:any;
+
+  constructor() { 
+  	this.oferta = {};
+  }
 
   ngOnInit() {
   }

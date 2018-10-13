@@ -1,1 +1,16 @@
 <h1>Crear oferta</h1>
+<form>
+	<div class="form-group">
+		<label for="titulo">titulo</label>
+		<input [(ngModel)]="oferta.titulo" type="text" name="titulo" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="descripcion">descripcion</label>
+		<textarea [(ngModel)]="oferta.descripcion" type="text" name="descripcion" class="form-control"></textarea>
+  </div>
+	<div class="form-group">
+		<label for="porcentaje">porcentaje</label>
+		<textarea [(ngModel)]="oferta.porcentaje" type="text" name="porcentaje" class="form-control"></textarea>
+  </div>
+	<button class="btn btn-success" (click)="crearOferta()">Crear oferta</button>
+</form>

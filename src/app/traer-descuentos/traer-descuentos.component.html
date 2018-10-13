@@ -1,22 +1,43 @@
 <h2>Listado de descuentos</h2>
-<button class="btn btn-success" routerLink="/crear-descuento">Nuevo</button>
-<table class="table table-hover table-bordered">
-	<thead>
-    <th>Titulo</th>
-    <th>Descripcion</th>
-    <th>Porcentaje</th>
-		<th>Acción</th>
-	</thead>
-	<tbody>
-		<tr *ngFor="let descuento of descuentos">
-        <td>{{ descuento.titulo }}</td>
-				<td>{{ descuento.descripcion }}</td>
-				<td>{{ descuento.porcentaje }}</td>
-				<td>
-					<a [routerLink]="['/modificar-descuento', descuento.id]" class="btn btn-light">Editar</a>
-					<a (click)="eliminarDescuento(descuento.id)" class="card-link">Eliminar</a>
-				</td>
-			
-		</tr>
-	</tbody>
-</table>
+<div class="container principal">
+  <br>
+	<div class="container">
+
+	  <div class="row">
+	    <div class="col-md-8 principal-contenido">
+			<button class="btn btn-success" routerLink="/crear-descuento">Nuevo</button>
+			<table class="table table-bordered">
+				<thead>
+			    <th>Titulo</th>
+			    <th>Descripcion</th>
+			    <th>Porcentaje</th>
+					<th>Acción</th>
+				</thead>
+				<tbody>
+					<tr *ngFor="let descuento of descuentos">
+			        <td>{{ descuento.titulo }}</td>
+							<td>{{ descuento.descripcion }}</td>
+							<td>{{ descuento.porcentaje }}</td>
+							<td>
+								<a [routerLink]="['/modificar-descuento', descuento.id]" class="btn btn-light">Editar</a>
+								<a (click)="eliminarDescuento(descuento.id)" class="card-link">Eliminar</a>
+							</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	    <div class="col-md-4 sidebar">
+
+	        <br>
+	        <p>Realiza una búsqueda</p>
+	        <input (keyup)="onKey($event)" class="form-control" id="myInput" type="text" placeholder="Buscar..">
+	        <br>
+	        <button class="btn btn-primary" routerLink="/">Buscar</button>
+	    </div>         
+	  </div>
+
+	  <br>
+	  <br>
+	</div>
+</div>

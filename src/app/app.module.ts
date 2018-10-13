@@ -29,21 +29,35 @@ import { CrearDescuentoComponent } from './crear-descuento/crear-descuento.compo
 import { ModificarDescuentoComponent } from './modificar-descuento/modificar-descuento.component';
 
 import { NgbdModalContent } from './crear-cuenta/crear-cuenta.component';
+import { TraerResiduosComponent } from './traer-residuos/traer-residuos.component';
+import { CrearResiduoComponent } from './crear-residuo/crear-residuo.component';
+import { ModificarResiduoComponent } from './modificar-residuo/modificar-residuo.component';
+
+import { Globals } from './globals';
 
 const rutas:Routes=[
   {path:"", component:InicioComponent},
   {path:"inicio", component:InicioComponent},
   {path:"iniciar-sesion", component:IniciarSesionComponent},
   {path:"crear_cuenta", component:CrearCuentaComponent},
+
   {path:"traer-ofertas", component:TraerOfertasComponent},
   {path:"crear-oferta", component:CrearOfertaComponent},
   {path:"modificar-oferta/:id", component:ModificarOfertaComponent},
+
   {path:"traer-descuentos", component:TraerDescuentosComponent},
   {path:"crear-descuento", component:CrearDescuentoComponent},
   {path:"modificar-descuento/:id", component:ModificarDescuentoComponent},
+
+  {path:"traer-residuos", component:TraerResiduosComponent},
+  {path:"crear-residuo", component:CrearResiduoComponent},
+  {path:"modificar-residuo/:id", component:ModificarResiduoComponent},
+
   {path:"traer-productos", component:TraerProductosComponent},
   {path:"crear-producto", component:CrearProductoComponent},
   {path:"modificar-producto/:id", component:ModificarProductoComponent},
+
+  
   {path:"*", redirectTo:'/', pathMatch:'full'}
 ];
 
@@ -64,7 +78,10 @@ const rutas:Routes=[
     ModificarProductoComponent,
     CrearDescuentoComponent,
     ModificarDescuentoComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    TraerResiduosComponent,
+    CrearResiduoComponent,
+    ModificarResiduoComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +92,8 @@ const rutas:Routes=[
     NgbModule.forRoot()
   ],
   providers: [
-    UsuariosService
+    UsuariosService,
+    Globals
   ],
   bootstrap: [AppComponent],
   entryComponents: [

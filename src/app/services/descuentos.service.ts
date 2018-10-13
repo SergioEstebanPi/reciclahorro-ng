@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { Globals } from '../globals';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +14,11 @@ export class DescuentosService {
 	encabezados:any;
 	descuentos:Array<any>;
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,
+    private _globals:Globals) {
   	//this.url = "https://reciclahorro-api.herokuapp.com/descuentos";
-    this.url = "http://localhost:3000/descuentos";
+    //this.url = "http://localhost:3000/descuentos";
+    this.url = _globals.url + 'descuentos';
   	this.encabezados = {
   		headers: new HttpHeaders(
 		  	{

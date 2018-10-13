@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
+import { Globals } from '../globals';
+
 @Injectable({
 	providedIn: 'root'
 })
@@ -14,9 +16,11 @@ export class UsuariosService {
 	private encabezados: any;
 
 	constructor(private http: HttpClient,
-		private _router: Router) {
+		private _router: Router,
+		private _globals:Globals) {
 		//this.url = "https://reciclahorro-api.herokuapp.com";
-		this.url = "http://localhost:3000";
+		//this.url = "http://localhost:3000";
+		this.url = _globals.url;
 		this.encabezados = {
 			headers: new HttpHeaders(
 				{

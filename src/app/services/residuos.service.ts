@@ -8,17 +8,17 @@ import { Globals } from '../globals';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosService {
+export class ResiduosService {
 
-  url:string;
-  encabezados:any;
-  productos:Array<any>;
+ 	url:string;
+	encabezados:any;
+	residuos:Array<any>;
 
   constructor(private http:HttpClient,
     private _globals:Globals) {
-  	//this.url = "https://reciclahorro-api.herokuapp.com/productos";
-    //this.url = "http://localhost:3000/productos";
-    this.url = _globals.url + 'productos';
+  	//this.url = "https://reciclahorro-api.herokuapp.com/residuos";
+    //this.url = "http://localhost:3000/residuos";
+    this.url = _globals.url + 'residuos';
   	this.encabezados = {
   		headers: new HttpHeaders(
 		  	{
@@ -30,7 +30,7 @@ export class ProductosService {
   }
 
   /* GET index */
-  traerProductos():Observable<any>{
+  traerResiduos():Observable<any>{
   	return this.http.get<any>(
   			this.url,
   			this.encabezados
@@ -38,38 +38,37 @@ export class ProductosService {
   }
 
   /* GET show */
-  mostrarProducto(id):Observable<any>{
-  	let urlProducto = this.url + "/" + id;
+  mostrarResiduo(id):Observable<any>{
+  	let urlresiduo = this.url + "/" + id;
   	return this.http.get<any>(
-  		urlProducto,
+  		urlresiduo,
   		this.encabezados
   	);
   }
 
   /* POST create */
-  crearProducto(producto){
+  crearResiduo(residuo){
   	return this.http.post<any>(
   		this.url,
-  		producto,
+  		residuo,
   		this.encabezados
   	);
   }
 
   /* PUT update */
-  modificarProducto(producto){
-	let urlProducto = this.url + '/' + producto.id;
+  modificarResiduo(residuo){
   	return this.http.put<any>(
-  		urlProducto,
-  		producto,
+  		this.url,
+  		residuo,
   		this.encabezados
   	);
   }
 
   /* DELETE destroy */
-  eliminarProducto(id){
-  	let urlProducto = this.url + "/" + id;
+  eliminarResiduo(id){
+  	let urlresiduo = this.url + "/" + id;
   	return this.http.delete<any>(
-  		urlProducto,
+  		urlresiduo,
   		this.encabezados
   	);
   }

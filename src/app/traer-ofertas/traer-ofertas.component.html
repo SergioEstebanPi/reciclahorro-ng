@@ -15,12 +15,12 @@
 		<div *ngFor="let oferta of ofertas">
 			<div class="card">
 			  <div class="card-body">
-			    <h5 class="card-title">{{ oferta.residuo.nombre }}</h5>
+			    <h5 class="card-title">{{ oferta.titulo }}</h5>
 			    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
-			    <img class="card-img-top" src="assets/img/103375_91919_1.jpg" style="width: 100px" alt="Card image cap">
+			    <img class="card-img-top" src="assets/{{oferta.imagen}}" style="width: 100px" alt="Card image cap">
 			    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
-					<a *ngIf="autenticado" (click)="mostraroferta(oferta.id)" class="btn btn-light">Editar</a>
-					<a *ngIf="autenticado" (click)="eliminaroferta(oferta.id)" class="card-link">Eliminar</a>
+					<a *ngIf="autenticado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
+					<a *ngIf="autenticado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>
 			  </div>
 			</div>
 			<br>

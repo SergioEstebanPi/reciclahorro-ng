@@ -21,7 +21,6 @@ export class CabeceraComponent implements OnInit {
   mostrar:boolean;
 
   modalRef:any;
-  modalRef2:any;
 
   constructor(private _usuarios: UsuariosService,
     private _router: Router,

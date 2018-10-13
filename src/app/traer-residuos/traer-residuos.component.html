@@ -1,0 +1,42 @@
+<div class="container principal">
+  <br>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8 principal-contenido">
+		<div class="form-group" text-center>
+			<h2>Listado de residuos</h2>
+			<button *ngIf="autenticado" class="btn btn-success" routerLink="/crear-residuo">Nuevo</button>
+		</div>
+
+		<img *ngIf="loading" src="assets/img/loading.gif"/> 
+
+		<div *ngIf="!residuos">No se encuentra</div>
+		<div *ngFor="let residuo of residuos">
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">{{ residuo.nombre }}</h5>
+			    <h6 class="card-subtitle mb-2 text-muted">{{ residuo.descripcion }}</h6>
+			    <img class="card-img-top" src="assets/{{residuo.imagen}}" style="width: 100px" alt="Card image cap">
+					<a *ngIf="autenticado" (click)="mostrarResiduo(residuo.id)" class="btn btn-light">Editar</a>
+					<a *ngIf="autenticado" (click)="eliminarResiduo(residuo.id)" class="card-link">Eliminar</a>
+			  </div>
+			</div>
+			<br>
+		</div>              
+      
+    </div>
+
+    <div class="col-md-4 sidebar">
+
+        <br>
+        <p>Realiza una búsqueda</p>
+        <input (keyup)="onKey($event)" class="form-control" id="myInput" type="text" placeholder="Buscar..">
+        <br>
+        <button class="btn btn-primary" routerLink="/">Buscar</button>
+    </div>         
+  </div>
+
+  <br>
+  <br>
+</div>
