@@ -16,6 +16,8 @@ import { UsuariosService } from './services/usuarios.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { SessionGuard } from './guards/session.guard';
 import { CrearOfertaComponent } from './crear-oferta/crear-oferta.component';
 import { ModificarOfertaComponent } from './modificar-oferta/modificar-oferta.component';
@@ -25,6 +27,8 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
 import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
 import { CrearDescuentoComponent } from './crear-descuento/crear-descuento.component';
 import { ModificarDescuentoComponent } from './modificar-descuento/modificar-descuento.component';
+
+import { NgbdModalContent } from './cabecera/cabecera.component';
 
 const rutas:Routes=[
   {path:"", component:InicioComponent},
@@ -59,18 +63,24 @@ const rutas:Routes=[
     CrearProductoComponent,
     ModificarProductoComponent,
     CrearDescuentoComponent,
-    ModificarDescuentoComponent
+    ModificarDescuentoComponent,
+    NgbdModalContent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(rutas),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     UsuariosService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NgbdModalContent,
+    IniciarSesionComponent
+  ],
 })
 export class AppModule { }

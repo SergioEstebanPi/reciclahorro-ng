@@ -6,20 +6,20 @@ import { UsuariosService } from '../services/usuarios.service';
 
 import { Output, EventEmitter } from '@angular/core';
 
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
 	selector: 'app-iniciar-sesion',
 	templateUrl: './iniciar-sesion.component.html',
 	styleUrls: ['./iniciar-sesion.component.css']
 })
-export class IniciarSesionComponent implements OnInit {
+export class IniciarSesionComponent {
 	formulario: any;
 	error:boolean;
 
-	@Output()
-	onLogeado = new EventEmitter<boolean>()
-
 	constructor(private _usuarios: UsuariosService,
-		private _router: Router) {
+		private _router: Router,
+		public activeModal: NgbActiveModal) {
 		this.formulario = {
 			auth: {
 				email: "",
@@ -37,10 +37,8 @@ export class IniciarSesionComponent implements OnInit {
 			.subscribe(
 				respuesta => {
 					localStorage.setItem("SessionToken", respuesta.jwt);
-					this.onLogeado.emit(true);
 					this.error = false;
-					//this.logeado = true;
-					//this._router.navigateByUrl('/');
+					this.activeModal.close(this.formulario);
 				},
 				error => {
 					this.error = true;

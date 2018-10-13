@@ -16,7 +16,8 @@ export class CrearCuentaComponent implements OnInit {
   error:boolean;
 
   @Output()
-  onLogeado = new EventEmitter<boolean>()
+  onLogeado = new EventEmitter<boolean>();
+  onRegistrado = new EventEmitter<boolean>();
 
   constructor(private _usuarios:UsuariosService,
     private _router: Router) {
@@ -45,6 +46,7 @@ export class CrearCuentaComponent implements OnInit {
   						password: this.formulario.user.password
   					}
   				};
+          this.onRegistrado.emit(true);
           this.iniciarSesion(autenticacion);
   			},
   			error => {

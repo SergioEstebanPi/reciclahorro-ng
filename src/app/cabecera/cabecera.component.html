@@ -19,9 +19,12 @@
       <li class="nav-item" *ngIf="logeado">
         <a class="nav-link" routerLink="/traer-productos">Productos</a>
       </li>
+      <li class="nav-item" *ngIf="logeado">
+        <a class="nav-link" (click)="open()">Residuos</a>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown" data-toggle="modal" data-target="#iniciarSesionModal" *ngIf="!logeado">
+      <li class="nav-item dropdown" data-toggle="modal" (click)="open()" *ngIf="!logeado">
         <a class="nav-link">Iniciar Sesión</a>
       </li>
       <li class="nav-item dropdown" data-toggle="modal" data-target="#crearCuentaModal" *ngIf="!logeado">
@@ -39,5 +42,5 @@
     </ul>
   </div>
 </nav>
-<app-iniciar-sesion *ngIf="!logeado" (onLogeado)="buscarUsuario()"></app-iniciar-sesion>
-<app-crear-cuenta *ngIf="!logeado" (onLogeado)="buscarUsuario()"></app-crear-cuenta>
+<!-- <app-iniciar-sesion *ngIf="!logeado" (onLogeado)="buscarUsuario()"></app-iniciar-sesion> -->
+<app-crear-cuenta *ngIf="!logeado"  (onRegistrado)="open()" (onLogeado)="buscarUsuario()"></app-crear-cuenta>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CrearProductoComponent implements OnInit {
 
 	producto:any;
+  error:boolean;
 
   constructor(private _productos:ProductosService,
   						private _router:Router) {
@@ -27,10 +28,12 @@ export class CrearProductoComponent implements OnInit {
 		this._productos.crearProducto(this.producto)
 			.subscribe(
 				respuesta => {
+          this.error = false;
 					this._router.navigate(["/traer-productos"]);
 					//console.log(respuesta);
 				},
 				error => {
+          this.error = true;
 					console.log(error);
 				}
 		);
