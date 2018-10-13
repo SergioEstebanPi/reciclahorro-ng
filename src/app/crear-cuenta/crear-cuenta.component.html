@@ -6,6 +6,10 @@
           </button>
         </div>
         <div class="modal-body">
+	      <div class="alert alert-danger alert-dismissible" *ngIf="error">
+	        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	        <strong>Error</strong> No fue posible crear la cuenta
+	      </div>
 			<div class="form-group">
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" [(ngModel)]="formulario.user.name" class="form-control">

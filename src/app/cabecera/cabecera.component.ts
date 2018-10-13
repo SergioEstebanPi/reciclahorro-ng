@@ -4,35 +4,10 @@ import { UsuariosService } from '../services/usuarios.service';
 import { Router } from '@angular/router';
 import { Observable } from '../../../node_modules/rxjs';
 
-import { Input } from '@angular/core';
-
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IniciarSesionComponent } from '../iniciar-sesion/iniciar-sesion.component';
 import { CrearCuentaComponent } from '../crear-cuenta/crear-cuenta.component';
 
-@Component({
-  selector: 'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Bienvenido!</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Hola {{ name }}. Gracias por registrarte con nosotros</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Aceptar</button>
-    </div>
-  `
-})
-export class NgbdModalContent {
-  @Input() name;
-
-  constructor(public activeModal: NgbActiveModal) {
-  }
-}
 
 @Component({
   selector: 'app-cabecera',
@@ -46,6 +21,7 @@ export class CabeceraComponent implements OnInit {
   mostrar:boolean;
 
   modalRef:any;
+  modalRef2:any;
 
   constructor(private _usuarios: UsuariosService,
     private _router: Router,
@@ -81,8 +57,8 @@ export class CabeceraComponent implements OnInit {
       .then(
           (result) => {
            //console.log(result);
-           //this.buscarUsuario();
-           this.iniciarSesion(result);
+           this.buscarUsuario();
+           //this.iniciarSesion(result);
          }
        ).catch(
          (error) => {
@@ -98,28 +74,14 @@ export class CabeceraComponent implements OnInit {
       .then(
           (result) => {
            //console.log(result);
-           this.iniciarSesion(result);
+           //this.iniciarSesion(result);
+           this.buscarUsuario();
          }
        ).catch(
          (error) => {
+           //this.modalRef.componentInstance.name = 'World';
            //console.log(error);
          }
-      );
-  }
-
-  iniciarSesion(autenticacion) {
-    this._usuarios
-      .obtenerToken(autenticacion)
-      .subscribe(
-        respuesta => {
-          localStorage.setItem("SessionToken", respuesta.jwt);
-          this.error = false;
-          this.buscarUsuario();
-        },
-        error => {
-          this.error = true;
-          console.log(error);
-        }
       );
   }
 
@@ -129,7 +91,8 @@ export class CabeceraComponent implements OnInit {
         respuesta => {
           this.usuario = respuesta;
           this.logeado = true;
-          this._router.navigateByUrl('/');
+          //this.modalRef2 = this._modal.open(NgbdModalContent);
+          //this._router.navigateByUrl('/');
         },
         error => {
           console.log(error);

@@ -31,7 +31,20 @@ export class IniciarSesionComponent {
 	ngOnInit() {
 	}
 
-	iniciarSesion() {
-		this.activeModal.close(this.formulario);
-	}
+	  iniciarSesion() {
+	  	this.error = false;
+	    this._usuarios
+	      .obtenerToken(this.formulario)
+	      .subscribe(
+	        respuesta => {
+	          localStorage.setItem("SessionToken", respuesta.jwt);
+	          this.error = false;
+	          this.activeModal.close(this.formulario);
+	        },
+	        error => {
+	          this.error = true;
+	          console.log(error);
+	        }
+	      );
+	  }
 }

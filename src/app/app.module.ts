@@ -28,7 +28,7 @@ import { ModificarProductoComponent } from './modificar-producto/modificar-produ
 import { CrearDescuentoComponent } from './crear-descuento/crear-descuento.component';
 import { ModificarDescuentoComponent } from './modificar-descuento/modificar-descuento.component';
 
-import { NgbdModalContent } from './cabecera/cabecera.component';
+import { NgbdModalContent } from './crear-cuenta/crear-cuenta.component';
 
 const rutas:Routes=[
   {path:"", component:InicioComponent},
