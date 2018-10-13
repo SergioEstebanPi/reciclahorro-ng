@@ -24,10 +24,10 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown" data-toggle="modal" (click)="open()" *ngIf="!logeado">
+      <li class="nav-item" data-toggle="modal" (click)="openIniciarSesion()" *ngIf="!logeado">
         <a class="nav-link">Iniciar Sesión</a>
       </li>
-      <li class="nav-item dropdown" data-toggle="modal" data-target="#crearCuentaModal" *ngIf="!logeado">
+      <li class="nav-item" data-toggle="modal" (click)="openCrearCuenta()" *ngIf="!logeado">
           <a class="nav-link">Crear cuenta</a>
       </li>
       <li class="nav-item dropdown" *ngIf="logeado">
@@ -43,4 +43,4 @@
   </div>
 </nav>
 <!-- <app-iniciar-sesion *ngIf="!logeado" (onLogeado)="buscarUsuario()"></app-iniciar-sesion> -->
-<app-crear-cuenta *ngIf="!logeado"  (onRegistrado)="open()" (onLogeado)="buscarUsuario()"></app-crear-cuenta>
+<!-- <app-crear-cuenta *ngIf="!logeado"  (onRegistrado)="open()" (onLogeado)="buscarUsuario()"></app-crear-cuenta> -->

@@ -32,18 +32,6 @@ export class IniciarSesionComponent {
 	}
 
 	iniciarSesion() {
-		this._usuarios
-			.obtenerToken(this.formulario)
-			.subscribe(
-				respuesta => {
-					localStorage.setItem("SessionToken", respuesta.jwt);
-					this.error = false;
-					this.activeModal.close(this.formulario);
-				},
-				error => {
-					this.error = true;
-					console.log(error);
-				}
-			);
+		this.activeModal.close(this.formulario);
 	}
 }

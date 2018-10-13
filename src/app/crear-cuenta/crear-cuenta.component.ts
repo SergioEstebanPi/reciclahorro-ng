@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { Output, EventEmitter } from '@angular/core';
 
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-crear-cuenta',
   templateUrl: './crear-cuenta.component.html',
@@ -15,12 +17,9 @@ export class CrearCuentaComponent implements OnInit {
   formulario:any;
   error:boolean;
 
-  @Output()
-  onLogeado = new EventEmitter<boolean>();
-  onRegistrado = new EventEmitter<boolean>();
-
   constructor(private _usuarios:UsuariosService,
-    private _router: Router) {
+    private _router: Router,
+    public activeModal: NgbActiveModal) {
     this.formulario = {
       user: {
         name: "",
@@ -46,8 +45,8 @@ export class CrearCuentaComponent implements OnInit {
   						password: this.formulario.user.password
   					}
   				};
-          this.onRegistrado.emit(true);
-          this.iniciarSesion(autenticacion);
+          //this.iniciarSesion(autenticacion);
+          this.activeModal.close(autenticacion);
   			},
   			error => {
   				console.log(error);
@@ -55,20 +54,6 @@ export class CrearCuentaComponent implements OnInit {
   		);
   }
 
-  iniciarSesion(autenticacion) {
-    this._usuarios
-      .obtenerToken(autenticacion)
-      .subscribe(
-        respuesta => {
-          localStorage.setItem("SessionToken", respuesta.jwt);
-          this.error = false;
-          this.onLogeado.emit(true);
-        },
-        error => {
-          this.error = true;
-          console.log(error);
-        }
-      );
-  }
+
 
 }

@@ -8,6 +8,7 @@ import { Input } from '@angular/core';
 
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IniciarSesionComponent } from '../iniciar-sesion/iniciar-sesion.component';
+import { CrearCuentaComponent } from '../crear-cuenta/crear-cuenta.component';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -73,19 +74,52 @@ export class CabeceraComponent implements OnInit {
     */
   }
 
-  open() {
+  openIniciarSesion() {
     this.modalRef = this._modal.open(IniciarSesionComponent);
     //this.modalRef.componentInstance.name = 'World';
     this.modalRef.result
       .then(
           (result) => {
            //console.log(result);
-           this.buscarUsuario();
+           //this.buscarUsuario();
+           this.iniciarSesion(result);
          }
        ).catch(
          (error) => {
-           console.log(error);
+           //console.log(error);
          }
+      );
+  }
+
+  openCrearCuenta(){
+    this.modalRef = this._modal.open(CrearCuentaComponent);
+    //this.modalRef.componentInstance.name = 'World';
+    this.modalRef.result
+      .then(
+          (result) => {
+           //console.log(result);
+           this.iniciarSesion(result);
+         }
+       ).catch(
+         (error) => {
+           //console.log(error);
+         }
+      );
+  }
+
+  iniciarSesion(autenticacion) {
+    this._usuarios
+      .obtenerToken(autenticacion)
+      .subscribe(
+        respuesta => {
+          localStorage.setItem("SessionToken", respuesta.jwt);
+          this.error = false;
+          this.buscarUsuario();
+        },
+        error => {
+          this.error = true;
+          console.log(error);
+        }
       );
   }
 
