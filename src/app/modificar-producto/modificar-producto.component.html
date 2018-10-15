@@ -1,5 +1,9 @@
 <h1>Modificar producto</h1>
 <form>
+<div class="alert alert-danger alert-dismissible" *ngIf="error">
+	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  <strong>Error</strong> No Se encuentra autorizado para realizar esta accion
+	</div>
 	<div class="form-group">
 		<label for="nombre">nombre</label>
 		<input [(ngModel)]="producto.nombre" type="text" name="nombre" class="form-control">
@@ -7,6 +11,10 @@
 	<div class="form-group">
 		<label for="descripcion">descripcion</label>
 		<textarea [(ngModel)]="producto.descripcion" type="text" name="descripcion" class="form-control"></textarea>
-  </div>
+  	</div>
+  	<div class="form-group">
+  		<img [src]="imagenProducto" height="200"> <br/>
+		<input type='file' (change)="onSelectFile($event)">
+	</div>  
 	<button class="btn btn-success" (click)="modificarProducto()">Modificar producto</button>
 </form>

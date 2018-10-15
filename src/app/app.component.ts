@@ -6,6 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'reciclahorro-ng';
-  url = '';
+  	title = 'reciclahorro-ng';
+  	url = '';
+    staticAlertClosed = true;
+    constructor() {
+    }
+
+    mostrarSuccess(){
+    	this.staticAlertClosed = false;
+		setTimeout(() => this.staticAlertClosed = true, 5000);
+    }
+
+    mostrarAlert(){
+
+    }
 }

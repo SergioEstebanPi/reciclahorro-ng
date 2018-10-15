@@ -9,6 +9,7 @@ import { IniciarSesionComponent } from '../iniciar-sesion/iniciar-sesion.compone
 import { CrearCuentaComponent } from '../crear-cuenta/crear-cuenta.component';
 
 import { Globals } from '../globals';
+import { Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -17,16 +18,23 @@ import { Globals } from '../globals';
   styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent implements OnInit {
+  @Output() 
+  onLogeado: EventEmitter<any> = new EventEmitter();
+
   logeado:boolean;
   error:boolean;
   usuario:any;
 
   modalRef:any;
+  iniciarSesion:boolean;
+  crearCuenta:boolean;
+  url:string;
 
   constructor(private _usuarios: UsuariosService,
     private _router: Router,
     private _modal: NgbModal,
     private _globlas: Globals) {
+      this.url = this._globlas.url;
       this.usuario = {
         nombre: "",
         email: ""
@@ -38,9 +46,10 @@ export class CabeceraComponent implements OnInit {
   ngOnInit() {
     if(localStorage.getItem("SessionToken") != null){
       this.buscarUsuario();
-    } else {
-      this._router.navigateByUrl('/');
     }
+    // else {
+      //this._router.navigateByUrl('/');
+    //}
   }
 
   ngAfterViewInit(){
@@ -58,6 +67,7 @@ export class CabeceraComponent implements OnInit {
       .then(
           (result) => {
            //console.log(result);
+           this.iniciarSesion = true;
            this.buscarUsuario();
            //this.iniciarSesion(result);
          }
@@ -76,6 +86,7 @@ export class CabeceraComponent implements OnInit {
           (result) => {
            //console.log(result);
            //this.iniciarSesion(result);
+           this.crearCuenta = true;
            this.buscarUsuario();
          }
        ).catch(
@@ -92,6 +103,11 @@ export class CabeceraComponent implements OnInit {
         respuesta => {
           this.usuario = respuesta;
           this.logeado = true;
+          if (this.iniciarSesion || this.crearCuenta) {
+            this.onLogeado.emit(true);
+            this.iniciarSesion = false;
+            this.crearCuenta = false;
+          }
           //this.modalRef2 = this._modal.open(NgbdModalContent);
           //this._router.navigateByUrl('/');
         },
@@ -105,6 +121,18 @@ export class CabeceraComponent implements OnInit {
     localStorage.removeItem('SessionToken');
     this.usuario = null;
     this.logeado = false;
-    this._router.navigateByUrl('/');
+    this._usuarios.cerraSesion()
+      .subscribe(
+        respuesta => {
+          window.location.reload();
+          this._router.navigateByUrl('/');
+        },
+        error => {
+          window.location.reload();
+          console.log(error);
+          this._router.navigateByUrl('/');
+        }
+      );
+    //this._router.navigateByUrl('/');
   }
 }

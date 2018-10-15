@@ -7,5 +7,6 @@ export class Globals {
   ADMINISTRADOR:string = '0';
   VECINO:string = '1';
   ALMACEN:string = '2';
+  RECOLECTOR:string = '3';
   
 }

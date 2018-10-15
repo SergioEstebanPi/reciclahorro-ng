@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductosService } from '../services/productos.service';
+import  { Globals } from '../globals';
+
+
 @Component({
   selector: 'app-traer-productos',
   templateUrl: './traer-productos.component.html',
@@ -10,13 +13,23 @@ export class TraerProductosComponent implements OnInit {
 
   productos:Array<any>;
   frase:string;
+  _productos:ProductosService;
+  url:string;
 
-  constructor(private _productos:ProductosService) {
+  constructor(private _productosService:ProductosService,
+    private _globals:Globals) {
+    this._productos = _productosService;
+    this.productos = [];
+    this.url = this._globals.url;
+    /*
     this.productos = [{
   		//id: "",
   		nombre: "",
-      descripcion: ""
+      descripcion: "",
+      imagen: "",
+      dataimagen: ""
   	}];
+    */
   }
 
   ngOnInit() {
@@ -49,13 +62,15 @@ export class TraerProductosComponent implements OnInit {
   		.subscribe(
   			respuesta => {
   				//console.log(respuesta);
-          this.productos = respuesta;
+          //this.productos = respuesta;
           if (this.frase && this.frase.trim() != '') {
             this.productos = this.productos.filter(
               (item) => {
                 return (item.nombre.toLowerCase().indexOf(this.frase.toLowerCase()) > -1);
               }
             );
+          } else {
+            this.productos = respuesta;
           }
   				//this.productos = respuesta;
   			},
@@ -78,7 +93,7 @@ export class TraerProductosComponent implements OnInit {
   		);
   }
 
-  eliminaProducto(id){
+  eliminarProducto(id){
   	let confirmacion = confirm("Estas seguro?");
   	if(confirmacion){
 	  	this._productos.eliminarProducto(id)

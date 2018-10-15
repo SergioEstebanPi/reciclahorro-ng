@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../services/ofertas.service';
 import { UsuariosService } from '../services/usuarios.service';
 
+import { Globals } from '../globals';
+
 @Component({
   selector: 'app-traer-ofertas',
   templateUrl: './traer-ofertas.component.html',
@@ -14,11 +16,16 @@ export class TraerOfertasComponent implements OnInit {
   logeado: boolean;
   loading:boolean;
   frase:string;
+  public isCollapsed = true;
+    url:string;
+
 
 
   constructor(private _ofertas:OfertasService,
-    private _usuarios: UsuariosService) {
+    private _usuarios: UsuariosService,
+    private _globals: Globals) {
     this.ofertas = [];
+    this.url = _globals.url;
     /*
     this.ofertas = [{
   		//id: "",
@@ -125,7 +132,7 @@ export class TraerOfertasComponent implements OnInit {
   		);
   }
 
-  eliminaOferta(id){
+  eliminarOferta(id){
   	let confirmacion = confirm("Estas seguro?");
   	if(confirmacion){
 	  	this._ofertas.eliminarOferta(id)

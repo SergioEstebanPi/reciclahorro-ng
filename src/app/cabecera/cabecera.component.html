@@ -10,19 +10,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/noticias">Noticias</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
+      </li>    
       <li class="nav-item dropdown" *ngIf="logeado">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Panel de control
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <ul>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/traer-ofertas">Ofertas</a>
-            </li>    
             <li class="nav-item" *ngIf="logeado">
               <a class="nav-link" routerLink="/traer-descuentos">Descuentos</a>
             </li>
-            <li class="nav-item" *ngIf="logeado">
+            <li class="nav-item" *ngIf="logeado && usuario.rol != null && usuario.rol.to_i == ALMACEN">
               <a class="nav-link" routerLink="/traer-productos">Productos</a>
             </li>
             <li class="nav-item" *ngIf="logeado">
@@ -48,7 +48,7 @@
       <li class="nav-item dropdown" *ngIf="logeado">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            {{usuario.name}}
-           <img [src]="'assets/' + usuario.foto" alt="Avatar" class="avatar">
+           <img [src]="url + usuario.foto" alt="Avatar" class="avatar">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item">Configuración</a>
@@ -58,5 +58,6 @@
     </ul>
   </div>
 </nav>
+
 <!-- <app-iniciar-sesion *ngIf="!logeado" (onLogeado)="buscarUsuario()"></app-iniciar-sesion> -->
 <!-- <app-crear-cuenta *ngIf="!logeado"  (onRegistrado)="open()" (onLogeado)="buscarUsuario()"></app-crear-cuenta> -->

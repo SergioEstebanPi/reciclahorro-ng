@@ -33,7 +33,7 @@ export class UsuariosService {
 	}
 
 	obtenerToken(autenticacion): Observable<any> {
-		let urlAutenticacion = this.url + "/user_token";
+		let urlAutenticacion = this.url + "user_token";
 		let parametros = JSON.stringify(autenticacion);
 		return this.http.post<any>(
 			urlAutenticacion,
@@ -43,7 +43,7 @@ export class UsuariosService {
 	}
 
 	crearCuenta(usuario): Observable<any> {
-		let urlCrearCuenta = this.url + "/users";
+		let urlCrearCuenta = this.url + "users";
 		let parametros = JSON.stringify(usuario);
 		return this.http.post<any>(
 			urlCrearCuenta,
@@ -53,7 +53,7 @@ export class UsuariosService {
 	}
 
 	usuarioActual(): Observable<any> {
-		let urlUsuario = this.url + "/users/current";
+		let urlUsuario = this.url + "users/current";
 		let encabezadosToken = {
 			headers: new HttpHeaders(
 				{
@@ -65,6 +65,14 @@ export class UsuariosService {
 		return this.http.get<any>(
 			urlUsuario,
 			encabezadosToken
+		);
+	}
+
+	cerraSesion(): Observable<any> {
+		let urlCerrarSesion = this.url + "logout";
+		return this.http.post<any>(
+			urlCerrarSesion,
+			this.encabezados
 		);
 	}
 }

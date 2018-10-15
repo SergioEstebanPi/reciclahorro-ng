@@ -1,6 +1,11 @@
-<app-cabecera></app-cabecera>
+<app-cabecera (onLogeado)="mostrarSuccess($event)"></app-cabecera>
 
 <div class="jumbotron">
-  <router-outlet></router-outlet>  
-  <app-piedepagina></app-piedepagina>
+	<div class="container">
+		<ngb-alert *ngIf="!staticAlertClosed"  type="success" (close)="staticAlertClosed = true"><strong>Bienvenido! </strong>Has iniciado sesion correctamente!</ngb-alert>
+	</div>
+  <router-outlet></router-outlet> 
+  <div id="espaciado" *ngIf="true"></div>
 </div>
+
+<app-piedepagina></app-piedepagina>

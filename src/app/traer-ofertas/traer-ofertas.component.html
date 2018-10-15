@@ -6,8 +6,7 @@
     <div class="col-md-8 principal-contenido">
 		<div class="form-group" text-center>
 			<h2>Listado de ofertas</h2>
-			<button *ngIf="logeado" class="btn btn-success" routerLink="/crear-oferta">Nuevo</button>
-		</div>
+		</div>	
 
 		<img *ngIf="loading" src="assets/img/loading.gif"/> 
 
@@ -17,7 +16,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title">{{ oferta.titulo }}</h5>
 			    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
-			    <img class="card-img-top" src="assets/{{oferta.imagen}}" style="width: 100px" alt="Card image cap">
+			    <img class="img-thumbnail" src="{{url + oferta.imagen}}" alt="Card image cap">
 			    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
 					<a *ngIf="logeado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
 					<a *ngIf="logeado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>
@@ -29,12 +28,31 @@
     </div>
 
     <div class="col-md-4 sidebar">
+    	<div style="position:fixed">
 
-        <br>
-        <p>Realiza una búsqueda</p>
-        <input (keyup)="onKey($event)" class="form-control" id="myInput" type="text" placeholder="Buscar..">
-        <br>
-        <button class="btn btn-primary" routerLink="/">Buscar</button>
+
+
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">Realiza una busqueda</h5>
+			    <div class="card-text">
+			        <input (keyup)="onKey($event)" class="form-control" id="myInput" type="text" placeholder="Buscar..">
+			        <br>
+			        <!-- <button class="btn btn-primary btn-lg btn-block" routerLink="/">Buscar</button> -->
+
+					<button *ngIf="logeado" type="button" class="btn btn-success btn-lg btn-block" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Nuevo</button>
+					<div id="collapseExample" [ngbCollapse]="isCollapsed">
+					  <div class="card">
+					    <div class="card-body">
+					      <app-crear-oferta *ngIf="logeado"></app-crear-oferta>
+					    </div>
+					  </div>
+					</div>	
+				</div>
+			  </div>
+			</div>
+
+    	</div>
     </div>         
   </div>
 

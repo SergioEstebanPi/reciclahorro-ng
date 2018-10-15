@@ -13,13 +13,14 @@
 					<th>Acción</th>
 				</thead>
 				<tbody>
-					<tr *ngFor="let producto of productos">
-			        <td>{{ producto.nombre }}</td>
-							<td>{{ producto.descripcion }}</td>
-							<td>
-								<a [routerLink]="['/modificar-producto', producto.id]" class="btn btn-light">Editar</a>
-								<a (click)="eliminaProducto(producto.id)" class="btn btn-light">Eliminar</a>
-							</td>
+					<tr id="producto.id" *ngFor="let producto of productos">
+						<td><img class="img-thumbnail" src="{{url + producto.imagen}}" alt="Card image cap"></td>
+			        	<td>{{ producto.nombre }}</td>
+						<td>{{ producto.descripcion }}</td>
+						<td>
+							<a [routerLink]="['/modificar-producto', producto.id]" class="btn btn-light">Editar</a>
+							<a (click)="eliminarProducto(producto.id)" class="btn btn-light">Eliminar</a>
+						</td>
 						
 					</tr>
 				</tbody>

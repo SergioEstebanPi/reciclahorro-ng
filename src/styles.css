@@ -3,8 +3,13 @@ body {
     /*background-color: #fafafa;*/
     /*background-color: #ffffff;*/
     background-color: rgba(253, 213, 131, 0.664);
+    position: relative;
 }
 
 .principal {
 	background-color: white;
+}
+
+#section1 {
+	padding-top:70px;padding-bottom:70px;
 }

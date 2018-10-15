@@ -12,5 +12,9 @@
 		<label for="descripcion">descripcion</label>
 		<textarea [(ngModel)]="producto.descripcion" type="text" name="descripcion" class="form-control"></textarea>
   	</div>
+  	<div class="form-group">
+  		<img [src]="imagenProducto" height="200"> <br/>
+		<input id="img" type='file' (change)="onSelectFile($event)">
+	</div>
 	<button class="btn btn-success" (click)="crearProducto()">Crear producto</button>
 </form>
