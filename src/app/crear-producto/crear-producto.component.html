@@ -14,7 +14,7 @@
   	</div>
   	<div class="form-group">
   		<img [src]="imagenProducto" height="200"> <br/>
-		<input id="img" type='file' (change)="onSelectFile($event)">
+		<input id="img" type='file' (submit)="onSelectFile($event)" (change)="onSelectFile($event)">
 	</div>
 	<button class="btn btn-success" (click)="crearProducto()">Crear producto</button>
 </form>

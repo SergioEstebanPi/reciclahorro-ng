@@ -31,7 +31,6 @@ export class ModificarProductoComponent implements OnInit {
       imagen: "",
       dataimagen: ""
   	};
-    this.imagenProducto = "/assets/img/44_supermarket_cart_shopping_item_add_product-512.png";
   }
 
   ngOnInit() {
@@ -42,7 +41,11 @@ export class ModificarProductoComponent implements OnInit {
 	  				respuesta => {
 	  					//console.log(respuesta);
 	  					this.producto = respuesta;
-              this.imagenProducto = this.url + this.producto.imagen;
+              if(this.producto.imagen){
+                this.imagenProducto = this.url + this.producto.imagen;
+              } else {
+                this.imagenProducto = this._globals.imgdefault;
+              }
 	  				},
 	  				error => {
 	  					console.log(error);

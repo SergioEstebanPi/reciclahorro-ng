@@ -15,12 +15,14 @@ export class TraerProductosComponent implements OnInit {
   frase:string;
   _productos:ProductosService;
   url:string;
+  imgdefault:string;
 
   constructor(private _productosService:ProductosService,
     private _globals:Globals) {
     this._productos = _productosService;
     this.productos = [];
     this.url = this._globals.url;
+    this.imgdefault = this._globals.imgdefault;
     /*
     this.productos = [{
   		//id: "",

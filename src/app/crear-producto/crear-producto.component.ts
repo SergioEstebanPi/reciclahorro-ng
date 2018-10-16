@@ -25,21 +25,11 @@ export class CrearProductoComponent implements OnInit {
       imagen: "",
       dataimagen: ""
   	};
-    this.imagenProducto = "/assets/img/44_supermarket_cart_shopping_item_add_product-512.png";
+    this.imagenProducto = this._globals.imgdefault;
     //this.producto.imagen = this._globals.url + "44_supermarket_cart_shopping_item_add_product-512.png";
   }
 
   ngOnInit() {
-    /*
-    let file:any = document.getElementById('img');
-    let reader = new FileReader();
-    reader.readAsDataURL(file.src); // read file as data url
-    reader.onload = (event) => { // called once readAsDataURL is completed
-      this.imagenProducto = reader.result;
-      this.producto.imagen = file.src.name;
-      this.producto.dataimagen = this.imagenProducto.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
-    };
-    */
   }
 
   onSelectFile(event) { // called each time file input changes

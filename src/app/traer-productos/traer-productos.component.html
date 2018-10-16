@@ -14,7 +14,7 @@
 				</thead>
 				<tbody>
 					<tr id="producto.id" *ngFor="let producto of productos">
-						<td><img class="img-thumbnail" src="{{url + producto.imagen}}" alt="Card image cap"></td>
+						<td><img class="img-thumbnail" src="{{ producto.imagen ? url + producto.imagen : imgdefault }} " alt="Card image cap"></td>
 			        	<td>{{ producto.nombre }}</td>
 						<td>{{ producto.descripcion }}</td>
 						<td>
