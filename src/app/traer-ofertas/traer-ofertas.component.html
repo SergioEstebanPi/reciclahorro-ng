@@ -14,12 +14,20 @@
 		<div *ngFor="let oferta of ofertas">
 			<div class="card">
 			  <div class="card-body">
-			    <h5 class="card-title">{{ oferta.titulo }}</h5>
-			    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
-			    <img class="img-thumbnail" src="{{url + oferta.imagen}}" alt="Card image cap">
-			    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
-					<a *ngIf="logeado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
-					<a *ngIf="logeado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>
+			  	<div class="container">
+			  		<div class="row">
+			  			<div class="col-md-3">
+			  				<img class="img-thumbnail" src="{{url + oferta.imagen}}" alt="Card image cap">	
+			  			</div>
+			  			<div class="col-md-8">
+						    <h5 class="card-title">{{ oferta.titulo }}</h5>
+						    <h6 class="card-subtitle mb-2 text-muted">{{ oferta.almacen.nombre }}</h6>
+						    <p class="card-text">Residuos: {{ oferta.residuo.nombre }} - Porcentaje: {{ oferta.descuento.porcentaje }} </p>
+							<a *ngIf="logeado" (click)="mostrarOferta(oferta.id)" class="btn btn-light">Editar</a>
+							<a *ngIf="logeado" (click)="eliminarOferta(oferta.id)" class="card-link">Eliminar</a>	
+			  			</div>
+			  		</div>
+			  	</div>
 			  </div>
 			</div>
 			<br>

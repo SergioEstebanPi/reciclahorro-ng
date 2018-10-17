@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Output, EventEmitter } from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,12 +11,13 @@ export class AppComponent {
   	title = 'reciclahorro-ng';
   	url = '';
     staticAlertClosed = true;
+
     constructor() {
     }
 
     mostrarSuccess(){
     	this.staticAlertClosed = false;
-		setTimeout(() => this.staticAlertClosed = true, 5000);
+		  setTimeout(() => this.staticAlertClosed = true, 5000);
     }
 
     mostrarAlert(){

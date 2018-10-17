@@ -4,8 +4,7 @@
 	<div class="container">
 		<ngb-alert *ngIf="!staticAlertClosed"  type="success" (close)="staticAlertClosed = true"><strong>Bienvenido! </strong>Has iniciado sesion correctamente!</ngb-alert>
 	</div>
-  <router-outlet></router-outlet> 
-  <div id="espaciado" *ngIf="true"></div>
+  	<router-outlet></router-outlet> 
 </div>
 
 <app-piedepagina></app-piedepagina>

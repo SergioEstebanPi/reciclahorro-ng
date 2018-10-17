@@ -3,3 +3,7 @@
     background-color: rgba(185, 209, 190, 0.356);
     padding: 20px;
 }
+
+#carouselExampleIndicators {
+	border: 1px solid #bbc6ff;
+}
