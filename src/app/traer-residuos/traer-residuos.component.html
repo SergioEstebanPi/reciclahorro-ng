@@ -9,7 +9,7 @@
 			<button *ngIf="true" class="btn btn-success" routerLink="/crear-residuo">Nuevo</button>
 		</div>
 
-		<img *ngIf="loading" src="assets/img/loading.gif"/> 
+		<img *ngIf="false" src="assets/img/loading.gif"/> 
 
 		<div *ngIf="!residuos">No se encuentra</div>
 		<div *ngFor="let residuo of residuos">
