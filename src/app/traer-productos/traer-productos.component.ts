@@ -13,13 +13,13 @@ export class TraerProductosComponent implements OnInit {
 
   productos:Array<any>;
   frase:string;
-  _productos:ProductosService;
+  //_productos:ProductosService;
   url:string;
   imgdefault:string;
 
-  constructor(private _productosService:ProductosService,
+  constructor(private _productos:ProductosService,
     private _globals:Globals) {
-    this._productos = _productosService;
+    //this._productos = _productosService;
     this.productos = [];
     this.url = this._globals.url;
     this.imgdefault = this._globals.imgdefault;

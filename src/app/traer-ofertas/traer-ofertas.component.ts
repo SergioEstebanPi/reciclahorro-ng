@@ -16,14 +16,17 @@ export class TraerOfertasComponent implements OnInit {
   logeado: boolean;
   loading:boolean;
   frase:string;
+  _ofertas:OfertasService;
+  
   public isCollapsed = true;
     url:string;
 
 
 
-  constructor(private _ofertas:OfertasService,
+  constructor(private _ofertasServices:OfertasService,
     private _usuarios: UsuariosService,
     private _globals: Globals) {
+    this._ofertas = _ofertasServices;
     this.ofertas = [];
     this.url = _globals.url;
     /*
