@@ -5,7 +5,7 @@
 	  <div class="row">
 	    <div class="col-md-8 principal-contenido">
 			<h2>Listado de productos</h2>
-			<button *ngIf="!logeado" class="btn btn-success" routerLink="/crear-producto">Nuevo</button>
+			<button *ngIf="true" class="btn btn-success" routerLink="/crear-producto">Nuevo</button>
 
 
 
@@ -21,8 +21,8 @@
 						    <h5 class="card-title">{{ producto.nombre }}</h5>
 						    <h6 class="card-subtitle mb-2 text-muted">{{ producto.descripcion }}</h6>
 						    <p class="card-text">Producto: </p>
-							<a *ngIf="logeado" (click)="mostrarProducto(producto.id)" class="btn btn-light">Editar</a>
-							<a *ngIf="logeado" (click)="eliminarProducto(producto.id)" class="card-link">Eliminar</a>	
+							<a *ngIf="true" (click)="mostrarProducto(producto.id)" class="btn btn-light">Editar</a>
+							<a *ngIf="true" (click)="eliminarProducto(producto.id)" class="card-link">Eliminar</a>	
 			  			</div>
 			  		</div>
 			  	</div>
@@ -70,11 +70,11 @@
 			        <br>
 			        <!-- <button class="btn btn-primary btn-lg btn-block" routerLink="/">Buscar</button> -->
 
-					<button *ngIf="logeado" type="button" class="btn btn-success btn-lg btn-block" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Nuevo</button>
-					<div id="collapseExample" [ngbCollapse]="isCollapsed">
+					<button *ngIf="true" type="button" class="btn btn-success btn-lg btn-block" aria-controls="collapseExample">Nuevo</button>
+					<div id="collapseExample">
 					  <div class="card">
 					    <div class="card-body">
-					      <app-crear-oferta *ngIf="logeado"></app-crear-oferta>
+					      <app-crear-oferta *ngIf="true"></app-crear-oferta>
 					    </div>
 					  </div>
 					</div>	
